@@ -29,13 +29,4 @@ jobs:
           quote-format: 'markdown'
 
       - name: ShowMarkdownOutput
-        run: echo '${{ steps.markdownchuck.outputs.quote }}'
-
-      - name: chuck-norris-quote-action-html
-        id: htmlchuck
-        uses: ./.github/actions/chuck-norris-quote
-        with:
-          quote-format: 'html'
-      
-      - name: ShowHtmlOutput
-        run: echo '${{ steps.htmlchuck.outputs.quote }}'
+        run: echo "${{ steps.markdownchuck.outputs.quote }}"
