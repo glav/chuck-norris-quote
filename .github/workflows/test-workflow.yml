@@ -1,0 +1,26 @@
+name: Chuck Norris test workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: chuck-norris-quote-action-text
+        uses: ./.github/actions/chuck-norris-quote
+        with:
+          quote-format: 'text'
+
+      - name: chuck-norris-quote-action-markdown
+        uses: ./.github/actions/chuck-norris-quote
+        with:
+          quote-format: 'markdown'
+
+      - name: chuck-norris-quote-action-html
+        uses: ./.github/actions/chuck-norris-quote
+        with:
+          quote-format: 'html'
