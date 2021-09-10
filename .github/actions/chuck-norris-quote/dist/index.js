@@ -8403,7 +8403,7 @@ async function run() {
         coreActions.setOutput("quote", formattedQuote);
 
     } catch (err) {
-        coreactions.setFailed(err);
+        coreActions.setFailed(err);
     }
 
 }
@@ -10508,7 +10508,7 @@ const options = {
 
 function formatQuote(formatType, quote, iconUrl) {
   
-  console.log(res.value);
+  console.log(quote);
 
   const realType = validFormat.isType(formatType);
   if (realType === validFormat.formats.Html) {

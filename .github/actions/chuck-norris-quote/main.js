@@ -17,7 +17,7 @@ async function run() {
         coreActions.setOutput("quote", formattedQuote);
 
     } catch (err) {
-        coreactions.setFailed(err);
+        coreActions.setFailed(err);
     }
 
 }
