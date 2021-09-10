@@ -15,7 +15,7 @@ function formatQuote(formatType, quote, iconUrl) {
   if (realType === validFormat.formats.Html) {
     return `<div class="chuck-norris-quote"><img src="${iconUrl}" alt="Check Norris quote" title="Check Norris quote" /><span>${quote}</span></div>`;
   }
-  if (realType === validFormat.formats.Markup) {
+  if (realType === validFormat.formats.Markdown) {
     return `![Chuck Norris quote](${iconUrl})${quote}`;
   }
   return quote;
