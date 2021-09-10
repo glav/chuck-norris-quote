@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: chuck-norris-quote-action
+        uses: ./.github/actions/chuck-norris-quote
+
       - name: chuck-norris-quote-action-text
         id: textchuck
         uses: ./.github/actions/chuck-norris-quote
