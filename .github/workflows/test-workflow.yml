@@ -11,16 +11,28 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: chuck-norris-quote-action-text
+        id: textchuck
         uses: ./.github/actions/chuck-norris-quote
         with:
           quote-format: 'text'
 
+      - name: ShowTextOutput
+        run: echo ${{ textchuck.outputs.quote }}
+
       - name: chuck-norris-quote-action-markdown
+        id: markdownchuck
         uses: ./.github/actions/chuck-norris-quote
         with:
           quote-format: 'markdown'
 
+      - name: ShowMarkdownOutput
+        run: echo ${{ markdownchuck.outputs.quote }}
+
       - name: chuck-norris-quote-action-html
+        id: htmlchuck
         uses: ./.github/actions/chuck-norris-quote
         with:
           quote-format: 'html'
+      
+      - name: ShowHtmlOutput
+        run: echo ${{ htmlchuck.outputs.quote }}
