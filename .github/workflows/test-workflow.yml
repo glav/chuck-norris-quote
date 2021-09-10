@@ -17,7 +17,7 @@ jobs:
           quote-format: 'text'
 
       - name: ShowTextOutput
-        run: echo ${{ textchuck.outputs.quote }}
+        run: echo ${{ steps.textchuck.outputs.quote }}
 
       - name: chuck-norris-quote-action-markdown
         id: markdownchuck
@@ -26,7 +26,7 @@ jobs:
           quote-format: 'markdown'
 
       - name: ShowMarkdownOutput
-        run: echo ${{ markdownchuck.outputs.quote }}
+        run: echo ${{ steps.markdownchuck.outputs.quote }}
 
       - name: chuck-norris-quote-action-html
         id: htmlchuck
@@ -35,4 +35,4 @@ jobs:
           quote-format: 'html'
       
       - name: ShowHtmlOutput
-        run: echo ${{ htmlchuck.outputs.quote }}
+        run: echo ${{ steps.htmlchuck.outputs.quote }}
