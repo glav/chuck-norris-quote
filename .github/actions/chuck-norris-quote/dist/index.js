@@ -10507,12 +10507,16 @@ const options = {
 };
 
 function formatQuote(formatType, quote, iconUrl) {
+  
+  console.log(res.value);
+
   const realType = validFormat.isType(formatType);
   if (realType === validFormat.formats.Html) {
     return `<div class="chuck-norris-quote"><img src="${iconUrl}" alt="Check Norris quote" title="Check Norris quote" /><span>${quote}</span></div>`;
   }
-  if (realType === validFormat.formats.Markup) {
-    return `![Chuck Norris quote](${iconUrl})${quote}`;
+  if (realType === validFormat.formats.Markdown) {
+    return `![Chuck Norris quote](${iconUrl})
+    ${quote}`;
   }
   return quote;
 }
@@ -10520,7 +10524,7 @@ function formatQuote(formatType, quote, iconUrl) {
 
 async function getQuote(quoteFormat) {
   const res = await request(options);
-  return formatQuote(quoteFormat, res.value, res.icon_url);
+   return formatQuote(quoteFormat, res.value, res.icon_url);
 }
 
 module.exports = getQuote;

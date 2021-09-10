@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: chuck-norris-quote-action
+        uses: ./.github/actions/chuck-norris-quote
+
       - name: chuck-norris-quote-action-text
         id: textchuck
         uses: ./.github/actions/chuck-norris-quote
@@ -17,7 +20,7 @@ jobs:
           quote-format: 'text'
 
       - name: ShowTextOutput
-        run: echo ${{ steps.textchuck.outputs.quote }}
+        run: echo "${{ steps.textchuck.outputs.quote }}"
 
       - name: chuck-norris-quote-action-markdown
         id: markdownchuck
@@ -26,7 +29,7 @@ jobs:
           quote-format: 'markdown'
 
       - name: ShowMarkdownOutput
-        run: echo ${{ steps.markdownchuck.outputs.quote }}
+        run: echo '${{ steps.markdownchuck.outputs.quote }}'
 
       - name: chuck-norris-quote-action-html
         id: htmlchuck
@@ -35,4 +38,4 @@ jobs:
           quote-format: 'html'
       
       - name: ShowHtmlOutput
-        run: echo ${{ steps.htmlchuck.outputs.quote }}
+        run: echo '${{ steps.htmlchuck.outputs.quote }}'
