@@ -1,0 +1,17 @@
+name: "Chuck Norris quote"
+
+description: "Creates a single Chuck Norris quote in plain text, markup or html"
+
+inputs:
+  quote-format:
+    description: "Specifiy what format would you like the quote in (text/html/markup)"
+    required: true
+    default: "text"
+
+outputs:
+  quote:
+    description: "The quote in the specified format"
+  
+runs:
+  using: "node12"
+  main: "dist/main.js"
