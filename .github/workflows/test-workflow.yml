@@ -20,7 +20,7 @@ jobs:
           quote-format: 'text'
 
       - name: ShowTextOutput
-        run: echo ${{ steps.textchuck.outputs.quote }}
+        run: echo "${{ steps.textchuck.outputs.quote }}"
 
       - name: chuck-norris-quote-action-markdown
         id: markdownchuck
