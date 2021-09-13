@@ -8392,7 +8392,7 @@ async function run() {
     try {
         
         var quoteFormat = coreActions.getInput("quote-format");
-        var shouldEncode = coreActions.getInput("encode-quote").toLowerCase() === 'true';
+        var shouldEscape = coreActions.getInput("escape-quote").toLowerCase() === 'true';
 
         if (validFormat.isValidType(quoteFormat) === false) {
             coreActions.warning(`Format type of [${quoteFormat}] not supported. Defaulting to '${validFormat.formats.Text}'`);
@@ -8400,9 +8400,9 @@ async function run() {
         }
 
         coreActions.info(`Setting quote format: [${quoteFormat}]`);
-        coreActions.info(`Encoding quote: [${shouldEncode}]`);
+        coreActions.info(`Escaping quote: [${shouldEscape}]`);
 
-        const formattedQuote = await getQuote(quoteFormat, shouldEncode);
+        const formattedQuote = await getQuote(quoteFormat, shouldEscape);
         coreActions.setOutput("quote", formattedQuote);
 
     } catch (err) {
@@ -10509,14 +10509,14 @@ const options = {
   json: true
 };
 
-function formatQuote(formatType, quote, shouldEncode) {
+function formatQuote(formatType, quote, shouldEscape) {
   
   console.log(quote);
 
   var finalQuote = quote;
 
-  if (shouldEncode === true) {
-    console.log("Encoding quote");
+  if (shouldEscape === true) {
+    console.log("Escaping quote");
     finalQuote = finalQuote.replace(/'/g, '%27');
   }
 
@@ -10528,9 +10528,9 @@ function formatQuote(formatType, quote, shouldEncode) {
 }
 
 
-async function getQuote(quoteFormat, shouldEncode) {
+async function getQuote(quoteFormat, shouldEscape) {
   const res = await request(options);
-   return formatQuote(quoteFormat, res.value.joke, shouldEncode);
+   return formatQuote(quoteFormat, res.value.joke, shouldEscape);
 }
 
 module.exports = getQuote;

@@ -1,11 +1,11 @@
 # Chuck Norris quote action
-A github action to output a random chuck norris quote within a wokflow. Supports text, markdown or html output.
+A github action to output a random chuck norris quote within a wokflow. Supports text or html output.
 
 # Usage
 ## A sample workflow to output a quote to the logs
 ### Inputs
 * quote-format : html or text(default) - Format to return the quote in.
-* encode-quote : true or false(default) - Whether the quote should be URI encoded or not.
+* escape-quote : true or false(default) - Whether the quote should be escaped which just means it will escape the single quote character which can cause problems when outputting the text quote in some scenarios such as using in -echo- statements(true | false)"
 ```
 name: Chuck Norris test workflow
 
@@ -42,7 +42,7 @@ jobs:
         uses: ./.github/actions/chuck-norris-quote
         with:
           quote-format: 'html'
-          encode-quote: 'true'
+          escape-quote: 'true'
 
       - name: ShowMarkdownOutput
         run: echo "${{ steps.htmlchuck.outputs.quote }}"

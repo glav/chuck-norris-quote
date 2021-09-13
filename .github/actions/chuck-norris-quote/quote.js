@@ -10,14 +10,14 @@ const options = {
   json: true
 };
 
-function formatQuote(formatType, quote, shouldEncode) {
+function formatQuote(formatType, quote, shouldEscape) {
   
   console.log(quote);
 
   var finalQuote = quote;
 
-  if (shouldEncode === true) {
-    console.log("Encoding quote");
+  if (shouldEscape === true) {
+    console.log("Escaping quote");
     finalQuote = finalQuote.replace(/'/g, '%27');
   }
 
@@ -29,9 +29,9 @@ function formatQuote(formatType, quote, shouldEncode) {
 }
 
 
-async function getQuote(quoteFormat, shouldEncode) {
+async function getQuote(quoteFormat, shouldEscape) {
   const res = await request(options);
-   return formatQuote(quoteFormat, res.value.joke, shouldEncode);
+   return formatQuote(quoteFormat, res.value.joke, shouldEscape);
 }
 
 module.exports = getQuote;

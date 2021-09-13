@@ -6,7 +6,7 @@ async function run() {
     try {
         
         var quoteFormat = coreActions.getInput("quote-format");
-        var shouldEncode = coreActions.getInput("encode-quote").toLowerCase() === 'true';
+        var shouldEscape = coreActions.getInput("escape-quote").toLowerCase() === 'true';
 
         if (validFormat.isValidType(quoteFormat) === false) {
             coreActions.warning(`Format type of [${quoteFormat}] not supported. Defaulting to '${validFormat.formats.Text}'`);
@@ -14,9 +14,9 @@ async function run() {
         }
 
         coreActions.info(`Setting quote format: [${quoteFormat}]`);
-        coreActions.info(`Encoding quote: [${shouldEncode}]`);
+        coreActions.info(`Escaping quote: [${shouldEscape}]`);
 
-        const formattedQuote = await getQuote(quoteFormat, shouldEncode);
+        const formattedQuote = await getQuote(quoteFormat, shouldEscape);
         coreActions.setOutput("quote", formattedQuote);
 
     } catch (err) {

@@ -7,8 +7,8 @@ inputs:
     description: "Specifiy what format would you like the quote in (text | html)"
     required: true
     default: "text"
-  encode-quote:
-    description: "Identify whether the quote should be URI encoded (true | false)"
+  escape-quote:
+    description: "Identify whether the quote should be escaped which just means it will escape the single quote character which can cause problems when outputting the text quote in some scenarios (true | false)"
     required: true
     default: "false"
 
