@@ -14,8 +14,9 @@ async function run() {
         }
 
         coreActions.info(`Setting quote format: [${quoteFormat}]`);
+        coreActions.info(`Encoding quote: [${shouldEncode}]`);
 
-        const formattedQuote = await getQuote(quoteFormat);
+        const formattedQuote = await getQuote(quoteFormat, shouldEncode);
         coreActions.setOutput("quote", formattedQuote);
 
     } catch (err) {
