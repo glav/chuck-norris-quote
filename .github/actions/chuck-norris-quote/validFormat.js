@@ -1,26 +1,27 @@
+const coreActions = require("@actions/core");
+
 const FMT_TEXT = 'text';
 const FMT_HTML = 'html';
-const validFormats = [FMT_HTML, FMT_TEXT];
 const formatType = {
     Text: FMT_TEXT,
     Html: FMT_HTML
 }
 
 const quote = {
-    isValidType: function(quoteFormat) {
-        if (validFormats.indexOf(quoteFormat) === -1) {
-            return false;
-        }
-        return true;
-    },
+
     formats: formatType,
-    isType: function(quoteFormat) {
-        if (quoteFormat === FMT_TEXT) {
+
+    parseValidType: function(quoteFormat) {
+        const testFormat = quoteFormat.toLowerCase();
+
+        if (testFormat === FMT_TEXT) {
             return formatType.Text;
         }
-        if (quoteFormat === FMT_HTML) {
+        if (testFormat === FMT_HTML) {
             return formatType.Html;
         }
+
+        coreActions.warning(`Format type of [${quoteFormat}] not supported. Defaulting to '${validFormat.formats.Text}'`);
         return formatType.Text;
     }
 }

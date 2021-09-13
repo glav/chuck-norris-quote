@@ -8394,15 +8394,12 @@ async function run() {
         var quoteFormat = coreActions.getInput("quote-format");
         var shouldEscape = coreActions.getInput("escape-quote").toLowerCase() === 'true';
 
-        if (validFormat.isValidType(quoteFormat) === false) {
-            coreActions.warning(`Format type of [${quoteFormat}] not supported. Defaulting to '${validFormat.formats.Text}'`);
-            quoteFormat =validFormat.formats.Text;
-        }
+        const actualFormat = validFormat.parseValidType(quoteFormat);
 
-        coreActions.info(`Setting quote format: [${quoteFormat}]`);
+        coreActions.info(`Setting quote format: [${actualFormat}]`);
         coreActions.info(`Escaping quote: [${shouldEscape}]`);
 
-        const formattedQuote = await getQuote(quoteFormat, shouldEscape);
+        const formattedQuote = await getQuote(actualFormat, shouldEscape);
         coreActions.setOutput("quote", formattedQuote);
 
     } catch (err) {
@@ -10499,6 +10496,7 @@ module.exports = function generate_validate(it, $keyword, $ruleType) {
 
 const request = __webpack_require__(127);
 const validFormat = __webpack_require__(734);
+const coreActions = __webpack_require__(836);
 
 const options = {
   method: "GET",
@@ -10511,17 +10509,17 @@ const options = {
 
 function formatQuote(formatType, quote, shouldEscape) {
   
-  console.log(quote);
-
   var finalQuote = quote;
 
+  // Output quote by default for a simple lighthearted addition to the build logs.
+  console.log(quote);
+
   if (shouldEscape === true) {
-    console.log("Escaping quote");
+    coreActions.info("Escaping quote");
     finalQuote = finalQuote.replace(/'/g, '%27');
   }
 
-  const realType = validFormat.isType(formatType);
-  if (realType === validFormat.formats.Html) {
+  if (formatType === validFormat.formats.Html) {
     return `<div class="chuck-norris-quote"><span>${finalQuote}</span></div>`;
   }
   return finalQuote;
@@ -30588,31 +30586,32 @@ function write(key, options) {
 /***/ }),
 /* 733 */,
 /* 734 */
-/***/ (function(module) {
+/***/ (function(module, __unusedexports, __webpack_require__) {
+
+const coreActions = __webpack_require__(836);
 
 const FMT_TEXT = 'text';
 const FMT_HTML = 'html';
-const validFormats = [FMT_HTML, FMT_TEXT];
 const formatType = {
     Text: FMT_TEXT,
     Html: FMT_HTML
 }
 
 const quote = {
-    isValidType: function(quoteFormat) {
-        if (validFormats.indexOf(quoteFormat) === -1) {
-            return false;
-        }
-        return true;
-    },
+
     formats: formatType,
-    isType: function(quoteFormat) {
-        if (quoteFormat === FMT_TEXT) {
+
+    parseValidType: function(quoteFormat) {
+        const testFormat = quoteFormat.toLowerCase();
+
+        if (testFormat === FMT_TEXT) {
             return formatType.Text;
         }
-        if (quoteFormat === FMT_HTML) {
+        if (testFormat === FMT_HTML) {
             return formatType.Html;
         }
+
+        coreActions.warning(`Format type of [${quoteFormat}] not supported. Defaulting to '${validFormat.formats.Text}'`);
         return formatType.Text;
     }
 }
