@@ -5,7 +5,7 @@ For example:
 ```
 Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris.
 ```
-This is a very simple, lighthearted addition to your workflow. It is quick and using the default, outputs a Chuck Norris quote to yourr workflow logs. You can optionally capture the tag as an action output and place that quote anywhere you like such as within a readme, as part of creating an issue, anything you like.
+This is a very simple, lighthearted addition to your workflow. It is very quick, and using the default options, outputs a Chuck Norris quote to yourr workflow logs. You can optionally capture the tag as an action output and place that quote anywhere you like such as within a readme, as part of creating an issue, anything you like.
 
 Note: Quotes of an explicit nature have been specifically excluded as part of the quote generation and there is currently no support to enable this.
 
