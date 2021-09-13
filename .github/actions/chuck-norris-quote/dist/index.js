@@ -10531,7 +10531,7 @@ function formatQuote(formatType, quote, shouldEncode) {
 
 async function getQuote(quoteFormat, shouldEncode) {
   const res = await request(options);
-   return formatQuote(quoteFormat, res.value, shouldEncode);
+   return formatQuote(quoteFormat, res.value.joke, shouldEncode);
 }
 
 module.exports = getQuote;
