@@ -1,3 +1,5 @@
+const coreActions = require("@actions/core");
+
 const FMT_TEXT = 'text';
 const FMT_HTML = 'html';
 const validFormats = [FMT_HTML, FMT_TEXT];
@@ -21,6 +23,8 @@ const quote = {
         if (quoteFormat === FMT_HTML) {
             return formatType.Html;
         }
+
+        coreActions.warning(`Format identifier [${quoteFormat}] not recognised. Defaulting to -text-`);
         return formatType.Text;
     }
 }
