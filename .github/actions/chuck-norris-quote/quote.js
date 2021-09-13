@@ -3,7 +3,7 @@ const validFormat = require("./validFormat");
 
 const options = {
   method: "GET",
-  uri: "https://api.chucknorris.io/jokes/random",
+  uri: "https://api.chucknorris.io/jokes/random?category=animal,career,celebrity,dev,fashion,food,history,money,movie,music,political,science,sport,travel",
   headers: {
     Accept: "application/json"
   },
