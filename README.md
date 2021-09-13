@@ -23,9 +23,9 @@ jobs:
         uses: ./.github/actions/chuck-norris-quote
 ```
 
-## A sample workflow to specify markdown output and use it in a subsequent step
+## A sample workflow to specify Html output and use it in a subsequent step
 ```
-name: Chuck Norris test workflow markdown
+name: Chuck Norris test workflow Html
 
 on:
   workflow_dispatch:
@@ -37,14 +37,14 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: chuck-norris-quote-action-markdown
+      - name: chuck-norris-quote-action-html
         id: htmlchuck
         uses: ./.github/actions/chuck-norris-quote
         with:
           quote-format: 'html'
           escape-quote: 'true'
 
-      - name: ShowMarkdownOutput
+      - name: ShowHtmlOutput
         run: echo "${{ steps.htmlchuck.outputs.quote }}"
 ```
 ## Building this action
