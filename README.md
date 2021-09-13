@@ -3,6 +3,9 @@ A github action to output a random chuck norris quote within a wokflow. Supports
 
 # Usage
 ## A sample workflow to output a quote to the logs
+### Inputs
+* quote-format : html or text(default) - Format to return the quote in.
+* encode-quote : true or false(default) - Whether the quote should be URI encoded or not.
 ```
 name: Chuck Norris test workflow
 
@@ -35,13 +38,14 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: chuck-norris-quote-action-markdown
-        id: markdownchuck
+        id: htmlchuck
         uses: ./.github/actions/chuck-norris-quote
         with:
-          quote-format: 'markdown'
+          quote-format: 'html'
+          encode-quote: 'true'
 
       - name: ShowMarkdownOutput
-        run: echo "${{ steps.markdownchuck.outputs.quote }}"
+        run: echo "${{ steps.htmlchuck.outputs.quote }}"
 ```
 ## Building this action
 Note: To build, you will need to install NCC and build the main.js file into the dist/index.js folder/file.

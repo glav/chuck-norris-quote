@@ -7,6 +7,10 @@ inputs:
     description: "Specifiy what format would you like the quote in (text | html)"
     required: true
     default: "text"
+  encode-quote:
+    description: "Identify whether the quote should be URI encoded (true | false)"
+    required: true
+    default: "false"
 
 outputs:
   quote:

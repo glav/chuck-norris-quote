@@ -10,21 +10,29 @@ const options = {
   json: true
 };
 
-function formatQuote(formatType, quote, iconUrl) {
+function formatQuote(formatType, quote, shouldEncode) {
   
   console.log(quote);
 
+  var finalQuote = quote;
+
+  if (shouldEncode === true) {
+    console.log("Encoding quote");
+    finalQuote = encodeURIComponent(quote);
+    finalQuote = finalQuote.replace(/'/g, '%27');
+  }
+
   const realType = validFormat.isType(formatType);
   if (realType === validFormat.formats.Html) {
-    return `<div class="chuck-norris-quote"><span>${quote}</span></div>`;
+    return `<div class="chuck-norris-quote"><span>${finalQuote}</span></div>`;
   }
-  return quote;
+  return finalQuote;
 }
 
 
-async function getQuote(quoteFormat) {
+async function getQuote(quoteFormat, shouldEncode) {
   const res = await request(options);
-   return formatQuote(quoteFormat, res.value);
+   return formatQuote(quoteFormat, res.value, shouldEncode);
 }
 
 module.exports = getQuote;

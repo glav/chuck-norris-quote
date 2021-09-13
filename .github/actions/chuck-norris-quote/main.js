@@ -6,6 +6,8 @@ async function run() {
     try {
         
         var quoteFormat = coreActions.getInput("quote-format");
+        var shouldEncode = coreActions.getInput("encode-quote").toLowerCase() === 'true';
+
         if (validFormat.isValidType(quoteFormat) === false) {
             coreActions.warning(`Format type of [${quoteFormat}] not supported. Defaulting to '${validFormat.formats.Text}'`);
             quoteFormat =validFormat.formats.Text;
