@@ -1,5 +1,6 @@
 const request = require("request-promise");
 const validFormat = require("./validFormat");
+const coreActions = require("@actions/core");
 
 const options = {
   method: "GET",
@@ -12,17 +13,17 @@ const options = {
 
 function formatQuote(formatType, quote, shouldEscape) {
   
-  console.log(quote);
-
   var finalQuote = quote;
 
+  // Output quote by default for a simple lighthearted addition to the build logs.
+  console.log(quote);
+
   if (shouldEscape === true) {
-    console.log("Escaping quote");
+    coreActions.info("Escaping quote");
     finalQuote = finalQuote.replace(/'/g, '%27');
   }
 
-  const realType = validFormat.isType(formatType);
-  if (realType === validFormat.formats.Html) {
+  if (formatType === validFormat.formats.Html) {
     return `<div class="chuck-norris-quote"><span>${finalQuote}</span></div>`;
   }
   return finalQuote;
