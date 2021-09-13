@@ -1,10 +1,10 @@
 name: "Chuck Norris quote"
 
-description: "Creates a single Chuck Norris quote in plain text, markup or html"
+description: "Creates a single Chuck Norris quote in plain text or html"
 
 inputs:
   quote-format:
-    description: "Specifiy what format would you like the quote in (text/html/markup)"
+    description: "Specifiy what format would you like the quote in (text | html)"
     required: true
     default: "text"
 

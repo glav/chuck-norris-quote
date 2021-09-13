@@ -3,7 +3,7 @@ const validFormat = require("./validFormat");
 
 const options = {
   method: "GET",
-  uri: "https://api.chucknorris.io/jokes/random?category=animal,career,celebrity,dev,fashion,food,history,money,movie,music,political,science,sport,travel",
+  uri: "https://api.icndb.com/jokes/random?exclude=[explicit]",
   headers: {
     Accept: "application/json"
   },
@@ -16,11 +16,7 @@ function formatQuote(formatType, quote, iconUrl) {
 
   const realType = validFormat.isType(formatType);
   if (realType === validFormat.formats.Html) {
-    return `<div class="chuck-norris-quote"><img src="${iconUrl}" alt="Check Norris quote" title="Check Norris quote" /><span>${quote}</span></div>`;
-  }
-  if (realType === validFormat.formats.Markdown) {
-    return `![Chuck Norris quote](${iconUrl})
-    ${quote}`;
+    return `<div class="chuck-norris-quote"><span>${quote}</span></div>`;
   }
   return quote;
 }
@@ -28,7 +24,7 @@ function formatQuote(formatType, quote, iconUrl) {
 
 async function getQuote(quoteFormat) {
   const res = await request(options);
-   return formatQuote(quoteFormat, res.value, res.icon_url);
+   return formatQuote(quoteFormat, res.value);
 }
 
 module.exports = getQuote;
