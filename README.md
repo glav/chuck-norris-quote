@@ -67,6 +67,10 @@ If you want to fork and make modifications to this action, simply edit the assoc
 #### Using ncc
 When you use ncc:
 
-```ncc build main.js```
+```ncc build .\main.js -o . -m```
 
-This creates the ```dist/index.js``` file which includes all the necessary dependencies aggregated into one file.
+or 
+
+```build.cmd```
+
+This creates the ```/index.js``` file which includes all the necessary dependencies aggregated into one file.
