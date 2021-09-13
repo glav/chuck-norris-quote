@@ -10499,7 +10499,7 @@ const validFormat = __webpack_require__(734);
 
 const options = {
   method: "GET",
-  uri: "https://api.chucknorris.io/jokes/random",
+  uri: "https://api.icndb.com/jokes/random?exclude=[explicit]",
   headers: {
     Accept: "application/json"
   },
@@ -10512,11 +10512,7 @@ function formatQuote(formatType, quote, iconUrl) {
 
   const realType = validFormat.isType(formatType);
   if (realType === validFormat.formats.Html) {
-    return `<div class="chuck-norris-quote"><img src="${iconUrl}" alt="Check Norris quote" title="Check Norris quote" /><span>${quote}</span></div>`;
-  }
-  if (realType === validFormat.formats.Markdown) {
-    return `![Chuck Norris quote](${iconUrl})
-    ${quote}`;
+    return `<div class="chuck-norris-quote"><span>${quote}</span></div>`;
   }
   return quote;
 }
@@ -10524,7 +10520,7 @@ function formatQuote(formatType, quote, iconUrl) {
 
 async function getQuote(quoteFormat) {
   const res = await request(options);
-   return formatQuote(quoteFormat, res.value, res.icon_url);
+   return formatQuote(quoteFormat, res.value);
 }
 
 module.exports = getQuote;
@@ -30586,12 +30582,10 @@ function write(key, options) {
 
 const FMT_TEXT = 'text';
 const FMT_HTML = 'html';
-const FMT_MARKDOWN = 'markdown';
-const validFormats = [FMT_HTML, FMT_MARKDOWN, FMT_TEXT];
+const validFormats = [FMT_HTML, FMT_TEXT];
 const formatType = {
     Text: FMT_TEXT,
-    Html: FMT_HTML,
-    Markdown: FMT_MARKDOWN
+    Html: FMT_HTML
 }
 
 const quote = {
@@ -30605,9 +30599,6 @@ const quote = {
     isType: function(quoteFormat) {
         if (quoteFormat === FMT_TEXT) {
             return formatType.Text;
-        }
-        if (quoteFormat === FMT_MARKDOWN) {
-            return formatType.Markdown;
         }
         if (quoteFormat === FMT_HTML) {
             return formatType.Html;

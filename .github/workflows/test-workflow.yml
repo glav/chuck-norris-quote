@@ -28,5 +28,3 @@ jobs:
         with:
           quote-format: 'markdown'
 
-      - name: ShowMarkdownOutput
-        run: echo "${{ steps.markdownchuck.outputs.quote }}"
