@@ -13,11 +13,12 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: chuck-norris-quote-action
-        uses: glav/chuck-norris-quote
+        uses: github.com/glav/chuck-norris-quote
 
       - name: chuck-norris-quote-action-text
         id: textchuck
-        uses: glav/chuck-norris-quote
+        uses: github.com/glav/chuck-norris-quote
+        
         with:
           quote-format: 'text'
           escape-quote: 'true'
