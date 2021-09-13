@@ -20,6 +20,7 @@ jobs:
         uses: ./.github/actions/chuck-norris-quote
         with:
           quote-format: 'text'
+          escape-quote: 'true'
 
       - name: ShowTextOutput
         run: echo "${{ steps.textchuck.outputs.quote }}"
