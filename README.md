@@ -14,7 +14,7 @@ Note: Quotes of an explicit nature have been specifically excluded as part of th
 * ```quote-format```: html/text. Default is ***text***
   * Format to return the quote in.
 * ```escape-quote``` : true/false. Default is ***false***.
-  * Deterrmines whether the quote should be escaped which just means it will escape the single quote character which can cause problems when outputting the text quote in some scenarios such as using in -echo- statements(true | false)"
+  * Deterrmines whether the quote should be escaped which just means it will escape the single quote character which can cause problems when outputting the text quote in some scenarios such as using in ```echo``` statements"
 ## A sample workflow to output a quote to the logs
 
 ```
