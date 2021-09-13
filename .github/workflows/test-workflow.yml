@@ -2,6 +2,8 @@ name: Chuck Norris test workflow
 
 on:
   workflow_dispatch:
+  pull_request:
+    
 
 jobs:
   action:
@@ -22,9 +24,4 @@ jobs:
       - name: ShowTextOutput
         run: echo "${{ steps.textchuck.outputs.quote }}"
 
-      - name: chuck-norris-quote-action-markdown
-        id: markdownchuck
-        uses: ./.github/actions/chuck-norris-quote
-        with:
-          quote-format: 'markdown'
 
