@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: chuck-norris-quote-action
-        uses: ./.github/actions/chuck-norris-quote
+        uses: glav/chuck-norris-quote@v1.0
 ```
 
 ## A sample workflow to specify Html output and use it in a subsequent step
@@ -50,7 +50,7 @@ jobs:
 
       - name: chuck-norris-quote-action-html
         id: htmlchuck
-        uses: ./.github/actions/chuck-norris-quote
+        uses: glav/chuck-norris-quote@v1.0
         with:
           quote-format: 'html'
           escape-quote: 'true'
