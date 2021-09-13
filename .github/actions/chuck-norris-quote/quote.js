@@ -18,7 +18,6 @@ function formatQuote(formatType, quote, shouldEncode) {
 
   if (shouldEncode === true) {
     console.log("Encoding quote");
-    finalQuote = encodeURIComponent(quote);
     finalQuote = finalQuote.replace(/'/g, '%27');
   }
 
