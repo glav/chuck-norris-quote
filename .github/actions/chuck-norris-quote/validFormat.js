@@ -12,7 +12,7 @@ const quote = {
     formats: formatType,
 
     parseValidType: function(quoteFormat) {
-        const testFormat = quoteFormat.toLowercase();
+        const testFormat = quoteFormat.toLowerCase();
 
         if (testFormat === FMT_TEXT) {
             return formatType.Text;
